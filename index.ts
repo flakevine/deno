@@ -1,2 +1,2 @@
 import { serve } from "https://deno.land/std@0.161.0/http/server.ts";
-serve(req => new Response("Hello World8\n"));
+serve(req => new Response("Hello World1000\n"));
