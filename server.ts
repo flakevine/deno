@@ -1,21 +1,15 @@
 import { serve } from "https://deno.land/std@0.140.0/http/server.ts";
+import { RoutesObject, createRouter } from './lib/index.ts'
 
-const routes = [
-  "/",
-  "/abou"
-]
-
-serve(async (req) => {
-  if (upgrade.toLowerCase() != "websocket") {
-
-    console.log(req.url);
-    
-    const rawPage = await Deno.readTextFile("client.html");
-
-    const page = rawPage.replaceAll('@URL_SERVER@', 'ws://' + req.url.split('//')[1])
-
-    return new Response(page, { headers: { 'Content-Type': 'text/html' } });
+serve((req) => {
+  const routes: RoutesObject = {
+    "/": (req) => new Response("Index"),
+    "/about": (req) => new Response("About"),
+    "/user": {
+      "/:id": (req, data) => new Response("User with some id " + data?.params.id)
+    }
   }
 
-  return new Response();
-});
+  const router = createRouter(routes)
+  return router.handleRequest(req);
+})
