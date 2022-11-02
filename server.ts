@@ -1,6 +1,5 @@
 import { serve } from "https://deno.land/std@0.140.0/http/server.ts";
-import { RoutesObject, createRouter } from './lib/index.ts'
-import { TemplateEngine } from "./lib/templates/engine.ts";
+import { RoutesObject, createRouter, TemplateEngine } from './lib/index.ts'
 const HTML_HEADERS = { headers: { 'Content-Type': 'text/html' } }
 
 serve((req) => {
