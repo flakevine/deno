@@ -3,7 +3,7 @@ export type RequestData = {
     params: Record<string, string>
 }
 
-export type Handler = (req: Request, data?: RequestData) => Response;
+export type Handler = ((req: Request, data?: RequestData) => Response) | ((req: Request, data?: RequestData) => Promise<Response>)
 
 export type RoutesObject = {
   [key: string]: Handler | RoutesObject;
@@ -36,11 +36,11 @@ export class Router {
     }));
   }
 
-  handleRequest(req: Request): Response {
+  async handleRequest(req: Request): Promise<Response> {
     for (const route of this.routes) {
       const match = route.matcher.exec(req.url)
       if (match) {
-        return route.handler(req, { params: match.pathname.groups });
+        return await route.handler(req, { params: match.pathname.groups });
       }
     }
 
