@@ -13,6 +13,7 @@ export type InternalRoute = {
   matcher: URLPattern;
   handler: Handler;
 };
+
 export type Route = {
   path: string;
   handler: Handler;
@@ -53,8 +54,6 @@ export function createRouter(routesObject: RoutesObject): Router {
     prefix: string,
   ): RoutesObject => {
     const newObj: RoutesObject = {};
-
-    console.log("concatenando");
 
     for (const key in routesObj) {
       newObj[prefix + key] = routesObj[key];
