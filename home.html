@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
+    <h1>top</h1>
     <p>{zimbas}</p>
-    <h1>{zimbas2}</h2>
-    <p>{teste}</p>
+
+    @component Header {props}
+
+    @component Body {user}
 
     <ul @event="update-messages">
         <div @channel="chat"></div>
         <input type="text" placeholder="Enter your message here..." />
     </ul>
 </body>
+
 </html>

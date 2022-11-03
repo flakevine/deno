@@ -1,5 +1,6 @@
 {
     "deno.enable": true,
     "deno.unstable": true,
-    "deno.lint": true
+    "deno.lint": true,
+    "deno.path": "C:\\Users\\45003836899\\.deno\\bin\\deno"
 }

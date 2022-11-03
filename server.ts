@@ -9,7 +9,8 @@ serve((req) => {
       const html = await Deno.readTextFile("home.html")
       return new Response(templateEngine.render(html, {
         zimbas: "teste",
-        zimbas2: 500,
+        props: 'passei por props',
+        user: 'viktor'
       }), HTML_HEADERS)
     },
     "/about": (req) => new Response("About"),
